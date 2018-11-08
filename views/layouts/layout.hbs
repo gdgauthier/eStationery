@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+{{> header }}
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<div class="container main-container">
+  {{{body}}}
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+  document.getElementById('lastModified').value = Date();
+</script>
+<script>
+  $(document).ready(function() {
+    $("#btn-miss").click(function(){
+      $("#missing-div").toggle();
+      $("#no-match").css("display", "none");
+    });
+    $("#cog").click(function(){
+      $("#admin").toggle();
+    });
+    $("#btn-miss, #btn-cart, #btn-user").on({
+      mouseenter: function () {
+        $(this).css("color", "grey");
+      },
+      mouseleave: function () {
+        $(this).css("color", "white");
+      }
+    });
+    $('#missing').on('keyup',function() {
+      $(this).css('width','0px');
+      $(this).css('height','0px');
+      $(this).css('width',Math.max(325,this.scrollWidth)+'px');
+      $(this).css('height',Math.max(130,this.scrollHeight)+'px');
+    });    
+  });
+</script>
+<script src="/javascripts/script.js"></script>  
+</body>
+</html>

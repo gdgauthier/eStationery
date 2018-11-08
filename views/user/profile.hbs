@@ -1,0 +1,30 @@
+<style>
+  #search-user, #btn-miss, #cog { 
+    display: none !important;
+  }
+</style>
+{{# if login}}
+{{# if_eq user.role "usuario"}}
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Historial de pedidos</h1>
+    <hr>  
+    {{# each orders }}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p><strong>Fecha del pedido:</strong> {{ this.dateOrder }}</p>
+        <ul class="list-group">
+        {{# each this.items }}
+          <li class="list-group-item">
+            <p><strong>Item:</strong> {{ this.item.title }} | <strong>Unidades:</strong> {{ this.qty }}</p>
+          </li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+  {{/each}}
+  <a href="/">Volver</a>
+  </div>
+</div>
+{{/if_eq}}
+{{/if}}

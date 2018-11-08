@@ -1,0 +1,49 @@
+<style>
+  #search-user, #btn-miss { 
+    display: none !important;
+  }
+</style>
+{{# if products }}
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+      <ul class="list-group">
+      {{# each products }}
+        <li class="list-group-item" id="group-item">
+          <span class="badge pull-left" name="qty">{{ this.qty }} </span>
+          <strong name="title">{{ item.title }}</strong>
+          <div class="btn-group pull-right">
+            {{#if_gt this.qty 1}}
+            <button class="btn btn-danger btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Eliminar<span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="/reduce/{{this.item._id}}">Eliminar uno</a></li> 
+                <li><a href="/remove/{{this.item._id}}">Eliminar todo</a></li>   
+              </ul>
+            {{else}}
+              <a class="btn btn-danger btn-xs btn-xxs" role="button" href="/reduce/{{this.item._id}}">Eliminar</a>
+            {{/if_gt}}
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      <a class="btn btn-success" role="button" href="/">Agregar más items</a>
+      <a class="btn btn-danger" role="button" href="/remove">Descartar pedido</a>      
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">      
+      <form action="/send" method="POST">
+        <input type="hidden" name="user" value="{{ user.email }}">        
+          <textarea name="clone" class="form-control" id="clone" rows="1" wrap="off">{{# each products }}{{ item.title }} : {{ this.qty }}&#13;&#10;{{/each}}</textarea> 
+        <button class="btn btn-info" type="submit">Enviar pedido por mail</button> 
+      </form>
+    </div>    
+  </div>
+  {{ else }}
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+      <h2>Pedido vacío</h2>
+      <a href="/admin">Volver</a>
+    </div>
+  </div>
+{{/if}}
