@@ -1,0 +1,46 @@
+{{# if_eq user.role "administrador"}}
+<style>
+  #search-user, #cog {
+    display: none !important;
+  }
+</style>
+{{/if_eq}}
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+    <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+      {{ successMsg }}
+    </div>
+  </div>
+</div>
+{{# if_eq user.role "usuario"}}
+<div class="row">  
+  <div class="col-sm-6 col-md-4 thumbnail" id="missing-div">
+<form action="/missing" method="POST">
+  <div class="form-group">
+    <label for="missing">Si no encuentra el artículo, por favor, complete debajo el formulario con descripción y cantidad. Luego presione enviar.</label>
+    <textarea wrap="off" name="missing" class="form-control" id="missing" rows="1" placeholder="Ejemplo: Madera terciada: 2mts"></textarea>    
+  </div>
+  <input type="hidden" name="user" value="{{ user.email }}">
+  <button class="btn btn-info" type="submit">Enviar</button>
+</form>
+</div>
+  {{# if_null noMatch null}}
+  <h4 id="no-match">{{noMatch}}</h4>
+  {{/if_null}}
+  {{# each products}}  
+  {{# if_gt this.stock 1}}
+  <div class="col-sm-6 col-md-4 items">
+    <div class="thumbnail">
+      <img src="{{ this.imagePath }}" alt="..." class="img-responsive zoom-user">
+      <div class="caption text-center">
+        <h5>{{ this.title }}</h5>
+        <div class="btn-group-vertical">
+          <a href="/add-to-cart/{{this._id}}" class="btn btn-success pull-left" role="button">Agregar al pedido</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if_gt}}
+  {{/each}}
+</div>
+{{/if_eq}}
