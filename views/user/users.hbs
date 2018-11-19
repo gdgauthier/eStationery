@@ -11,8 +11,11 @@
     {{# each users }}
       <li class="list-group-item">
         <strong name="email">{{ this.email }}</strong>
-        <span class="badge" name="role">{{ this.role }}</span>        
-        <form action="/users/{{ this._id }}?_method=DELETE" method="POST">
+        <span class="badge" name="role">{{ this.role }}</span>
+        <form action="/admin/users/{{ this.email }}" method="POST">
+          <button id="btn-reset-user" class="btn btn-info">Restablecer clave</button>
+        </form>
+        <form action="/admin/users/{{ this._id }}?_method=DELETE" method="POST">
           <button class="btn btn-danger btn-xs">Eliminar</button>
         </form>
       </li>
