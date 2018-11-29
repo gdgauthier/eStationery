@@ -1,33 +1,27 @@
-<<<<<<< HEAD
-﻿var express = require('express');
-=======
 var express = require('express');
->>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
 var nodemailer = require('nodemailer');
 var router = express.Router();
 var request = require("request");
 var Handlebars = require("handlebars");
 var path = require('path');
-<<<<<<< HEAD
-var csrf = require('csurf');
-=======
-var async = require('async');
-var crypto = require('crypto');
->>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
+var async = require("async");
+var crypto = require("crypto");
+var passport = require('passport');
 var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
 var user = require("../models/user");
 
 var transporter = nodemailer.createTransport({
-  host: "yourHost",
-  port: 2525,
+  host: "host",
+  port: 465,
+  secure: true,
   auth: {
-    user: "yourUser",
-    pass: "yourPsw"
+    user: "user",
+    pass: "password"
   },
   tls:{
-    rejectUnauthorized:false
+    rejectUnauthorized: false
   }
 });
 
@@ -56,7 +50,7 @@ router.get("/new", function(req, res) {
   if (req.isAuthenticated() && req.user.isAdmin()) {
 	res.render("shop/new", {title: 'eStationery - Nuevo Producto', successMsg: successMsg, noMessages: !successMsg, user: req.user});
   } else {
-      res.redirect("/admin");
+      res.redirect("/");
     }
 });
 
@@ -67,7 +61,7 @@ router.post("/", function(req, res) {
   var minimumStock = req.body.minimumStock;
   var imagePath = req.body.imagePath;
   var description = req.body.description;
-  var location = req.body.idProvider;
+  var location = req.body.location;
   var lastModified = Date.now();
   var newProduct = {title: title, stock: stock, imagePath: imagePath, description: description, minimumStock: minimumStock, location: location, lastModified: lastModified};
   Product.create(newProduct, function(err, newProduct) {
@@ -75,13 +69,13 @@ router.post("/", function(req, res) {
       console.log(err);
     } else {
         req.flash('success', 'Producto creado.');
-        res.redirect("/admin");
+        res.redirect("/");
       }
   });
 });
 
 //GET Edit item
-router.get("/edit/:id", function(req, res) {
+router.get("/edit/:id", isLoggedIn, isAdmin, function(req, res) {
   var successMsg = req.flash('success')[0];
   if (req.isAuthenticated() && req.user.isAdmin) {
     Product.findById(req.params.id, function(err, foundProduct) {
@@ -96,37 +90,42 @@ router.get("/edit/:id", function(req, res) {
 });
 
 //PUT save edited item
-router.put("/:id", function(req, res) {
+router.put("/:id", isLoggedIn, isAdmin, function(req, res) {
   Product.findByIdAndUpdate(req.params.id, req.body.product, function(err, updatedProduct) {
     if(err) {
-      res.redirect("/admin");
+      res.redirect("/");
     } else {
         req.flash('success', 'Producto actualizado.');
-        res.redirect("/admin");
+        res.redirect("/");
       }
   });
 });
 
 //DELETE delete item
-router.delete("/:id", function(req, res) {
+router.delete("/:id", isLoggedIn, isAdmin, function(req, res) {
   Product.findByIdAndRemove(req.params.id, function(err) {
     if(err) {
-      res.redirect("/admin");
+      res.redirect("/");
     } else {
         req.flash('success', 'Producto eliminado de la base de datos.');
-        res.redirect("/admin");
+        res.redirect("/");
     }
   });
 });
 
 //GET add item to cart
-router.get('/add-to-cart/:id', function(req, res, next) {
+router.get('/add-to-cart/:id', isLoggedIn, function(req, res, next) {
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   Product.findById(productId, function(err, product) {
     if (err) {
       return res.redirect('/');
-    }
+    }        
+    Product.findByIdAndUpdate(req.params.id, {$set: {tempStock: product.tempStock + 1, stock: product.stock -1}}, function(err, updatedProduct) {
+      if (err) {
+        return res.redirect('/');
+      } 
+    });
     cart.add(product, product.id);
     req.flash('success', 'Producto agregado al carrito.');
     req.session.cart = cart;
@@ -134,63 +133,101 @@ router.get('/add-to-cart/:id', function(req, res, next) {
   });
 });
 
+router.get('/admin/add-to-cart/:id', isLoggedIn, isAdmin, function(req, res, next) {
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  Product.findById(productId, function(err, product) {
+    if (err) {
+      return res.redirect('/');
+    }    
+    cart.add(product, product.id);
+    req.flash('success', 'Producto agregado al listado.');
+    req.session.cart = cart;
+    res.redirect("/");
+  });
+});
+
+
 //GET show cart
-router.get('/shopping-cart', isLoggedIn, isUser, function(req, res, next) {
+router.get('/shopping-cart', isLoggedIn, function(req, res, next) {
   if (!req.session.cart) {
    return res.render('shop/shopping-cart', {products: null, user: req.user});
   }
   Product.find(function(err, stock) {
     var cart = new Cart(req.session.cart);
-    res.render('shop/shopping-cart', { stock: stock, products: cart.generateArray(), user: req.user });
+    res.render('shop/shopping-cart', {title: 'eStationery', stock: stock, products: cart.generateArray(), user: req.user });
   });
 });
 
 //GET remove one item from same items from cart
-router.get('/reduce/:id', function(req, res, next) {
+router.get('/reduce/:id', isLoggedIn, function(req, res, next) {
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  cart.reduceByOne(productId);
-  req.session.cart = cart;
-  req.flash('success', 'Producto eliminado.');
-  res.redirect('/shopping-cart');
+  Product.findById(productId, function(err, product) {
+    if (err) {
+      return res.redirect('/');
+    }
+    Product.findByIdAndUpdate(req.params.id, {$set: {tempStock: product.tempStock - 1, stock: product.stock + 1}}, function(err, updatedProduct) {
+      if (err) {
+        return res.redirect('/');
+      } 
+    });
+    cart.reduceByOne(productId);
+    req.session.cart = cart;
+    req.flash('success', 'Producto eliminado.');
+    res.redirect('/shopping-cart');
+  });
+});
+
+router.get('/admin/reduce/:id', isLoggedIn, isAdmin, function(req, res, next) {
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  Product.findById(productId, function(err, product) {
+    if (err) {
+      return res.redirect('/');
+    }    
+    cart.reduceByOne(productId);
+    req.session.cart = cart;
+    req.flash('success', 'Producto eliminado.');
+    res.redirect('/shopping-cart');
+  });
 });
 
 //GET remove all items from same items from cart
-router.get('/remove/:id', function(req, res, next) {
+router.get('/remove/:id', isLoggedIn, function(req, res, next) {
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
-  cart.removeItem(productId);
-  req.session.cart = cart;
-  req.flash('success', 'Productos eliminados.');
-  res.redirect('/shopping-cart');
+  Product.findById(productId, function(err, product) {
+    if (err) {
+      return res.redirect('/');
+    }
+    Product.findByIdAndUpdate(req.params.id, {$set: {stock: product.stock + product.tempStock, tempStock: 0, }}, function(err, updatedProduct) {
+      if (err) {
+        return res.redirect('/');
+      } 
+    });
+    cart.removeItem(productId);
+    req.session.cart = cart;
+    req.flash('success', 'Productos eliminados.');
+    res.redirect('/shopping-cart');
+  });  
 });
-
-router.get('/remove', function(req, res, next) {
-  req.session.cart = null;
-  req.flash('success', 'Pedido descartado.');
-  res.redirect('/');
-});
-
 
 //MAILER ORIG
 router.post('/send', (req, res) => {
   const output = `
 Pedido de: ${req.body.user}
----------------------------------------
+--------------------------------------------------
 ${req.body.clone}
 `;
   
-//KEEP IT IN CASE YOU'D USE ATTACHMENTS
-//var source = fs.readFileSync(path.join('views/shop/email.html'));
-  
   let mailOptions = {
-        from: 'yourEmail',
-        to: 'yourReceiver',
-        subject: 'Nuevo pedido de librería', // Subject line        
-        //attachments: [{ path: '/Users/User/shopping cart/views/email/email.html'}]  //IN CASE OF ATACHMENTS
-        //html: source
+       
+        from: 'email',
+        to: 'email',
+        subject: 'Nuevo pedido de librería', // Subject line                
         text: output
-    };
+    };  
   
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
@@ -209,6 +246,48 @@ ${req.body.clone}
   order.save(function(err, result) {
     req.flash('success', 'Pedido enviado.');
     req.session.cart = null;
+    Product.bulkWrite([{
+      udpateMany: {
+      filter: {},
+      update: {tempStock: 0}
+      }
+    }]);
+    res.redirect('/');
+  });  
+});
+
+//MAILER items for ADMIN
+router.post('/admin/send', (req, res) => {
+  const output = `
+Listado de items faltantes para realizar pedido
+-----------------------------------------------
+${req.body.clone}
+`;
+  
+  let mailOptions = {       
+        from: 'email',        
+        to: 'email',
+        subject: 'Listado de items para pedido de librería', // Subject line             
+        text: output
+    };
+  
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+  });
+  
+  var cart = new Cart(req.session.cart);
+  var order = new Order({
+    user: req.user,
+    email: req.body.user,
+    dateOrder: Date.now(),
+    cart: cart
+  });
+
+  order.save(function(err, result) {
+    req.flash('success', 'Listado enviado.');
+    req.session.cart = null;
     res.redirect('/');
   });  
 });
@@ -217,15 +296,15 @@ ${req.body.clone}
 router.post('/missing', (req, res) => {
   const output = `
 Pedido de: ${req.body.user}
----------------------------------------
+--------------------------------------------------
 Artículos faltantes:
 
 ${req.body.missing}
   `;
   
   let mailOptions = {
-    from: 'yourEmail',
-    to: 'yourReceiver',
+    from: 'email',
+    to: 'email',    
     subject: 'Aviso de artículo faltante de librería', // Subject line 
     text: output
   };  
@@ -240,37 +319,49 @@ ${req.body.missing}
   
 });
 
-router.get('/admin', isLoggedIn, isAdmin, function (req, res, next) {
+//POST create user
+router.post('/create-user', isLoggedIn, isAdmin, function (req, res, next) {
+  req.logout();
+  res.redirect('/user/signup');
+});
+
+router.get('/signup', isLoggedIn, isAdmin, function (req, res, next) {
+    var messages = req.flash('error');
+    res.render('user/signup', {title: "eStationery", messages: messages, hasErrors: messages.length > 0});
+});
+
+//GET create user
+router.post('/signup', passport.authenticate('local.signup', {
+    session: false
+}), function (req, res, next) {    
+        res.redirect('/');
+});
+
+//GET list users
+router.get('/users', isLoggedIn, isAdmin, function (req, res, next) {
   var noMatch = null;
   var successMsg = req.flash('success')[0];
   if(req.query.search) {
-    var regex = new RegExp(escapeRegex(req.query.search), 'gi');    
-    Product.find({description: regex}, function(err, products) {
-      if(products.length === 0) {
-         noMatch = 'Ese producto no se encuentra. Pruebe con otra palabra, o cree uno nuevo.';
+      user.find({email: req.query.search}, function(err, users) {
+        if(users.length === 0) {
+          noMatch = 'Ese usuario no existe.';
+        }
+          if (err) {
+                return res.write('Error!');
+            }            
+            res.render('user/users', { users: users, successMsg: successMsg, noMessages: !successMsg, user: req.user, noMatch: noMatch});
+        });
+      } else {
+          user.find(function(err, users) {
+            if (err) {
+              return res.write('Error!');
+            }          
+            res.render('user/users', { users: users, successMsg: successMsg, noMessages: !successMsg, user: req.user });
+          });
       }
-      if (err) {
-        console.log("Error");
-        console.log(err);
-      } else {
-          res.render("user/admin", {title: 'eStationery - Administrator', products: products, successMsg: successMsg, noMessages: !successMsg, user: req.user, noMatch: noMatch});
-        }
-  });
-  } else {
-    Product.find(function(err, products) {
-      if (err) {
-        console.log("Error");
-        console.log(err);
-      } else {
-          res.render("user/admin", {title: 'eStationery - Administrator', products: products, successMsg: successMsg, noMessages: !successMsg, user: req.user, noMatch: noMatch});
-        }
-    });
-  }
 });
 
-<<<<<<< HEAD
-=======
-router.post('/admin/users/:email', isLoggedIn, isAdmin, function(req, res, next) {
+router.post('/users/:email', isLoggedIn, isAdmin, function(req, res, next) {
   async.waterfall([
     function(done) {
       crypto.randomBytes(20, function(err, buf) {
@@ -282,7 +373,7 @@ router.post('/admin/users/:email', isLoggedIn, isAdmin, function(req, res, next)
       user.findOne({ email: req.params.email }, function(err, user) {
         if (!user) {
           console.log('No account with that email address exists.');
-          return res.redirect('/admin/users');
+          return res.redirect('/users');
         }
 
         user.resetPasswordToken = token;
@@ -298,7 +389,7 @@ router.post('/admin/users/:email', isLoggedIn, isAdmin, function(req, res, next)
     }
   ], function(err) {
     if (err) return next(err);
-    res.redirect('/admin/users');
+    res.redirect('/users');
   });
 });
 
@@ -314,7 +405,7 @@ router.get('/reset/:token', isLoggedIn, isAdmin, function(req, res) {
   });
 });
 
-router.post('/reset/:token', function(req, res) {
+router.post('/reset/:token', isLoggedIn, isAdmin, function(req, res) {
   async.waterfall([
     function(done) {
       user.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
@@ -328,38 +419,20 @@ router.post('/reset/:token', function(req, res) {
         user.resetPasswordExpires = undefined;
 
         user.save(function(err) {
-          res.redirect('/admin');
+          res.redirect('/');
         });
       });
     }
   ], function(err) {
-    res.redirect('/admin');
-  });
-});
-
->>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
-//POST create user
-router.post('/admin/create-user', isLoggedIn, isAdmin, function (req, res, next) {
-  req.logout();
-  res.redirect('/user/signup');
-});
-
-//GET list users
-router.get('/users', isLoggedIn, isAdmin, function (req, res, next) {
-  var successMsg = req.flash('success')[0];
-  user.find(function(err, users) {
-    if (err) {
-      return res.write('Error!');
-    }          
-    res.render('user/users', { users: users, successMsg: successMsg, noMessages: !successMsg, user: req.user });
+    res.redirect('/');
   });
 });
 
 //DELETE delete users
-router.delete("/users/:id", function(req, res) {
+router.delete("/users/:id", isLoggedIn, isAdmin, function(req, res) {
   user.findByIdAndRemove(req.params.id, function(err) {
     if(err) {
-      res.redirect("/admin");
+      res.redirect("/");
     } else {
         req.flash('success', 'Usuario eliminado.');
         res.redirect("/users");
@@ -393,8 +466,4 @@ function isUser(req, res, next) {
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd

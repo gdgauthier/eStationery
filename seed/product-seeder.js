@@ -11,6 +11,7 @@ var products = [
       location: "",
       stock: 20,
       minimumStock: 15,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -20,6 +21,7 @@ var products = [
       location: "",
       stock: 20,
       minimumStock: 15,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -29,6 +31,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -38,6 +41,7 @@ var products = [
       location: "",
       stock: 10,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -47,6 +51,7 @@ var products = [
       location: "",
       stock: 60,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -56,6 +61,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -65,6 +71,7 @@ var products = [
       location: "",
       stock: 29,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -74,6 +81,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -83,6 +91,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -92,6 +101,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -101,6 +111,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 4,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -110,6 +121,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -119,6 +131,7 @@ var products = [
       location: "",
       stock: 4,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -128,6 +141,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -137,6 +151,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -145,7 +160,8 @@ var products = [
       imagePath: 'https://www.freeiconspng.com/uploads/no-image-icon-21.png',
       location: "",
       stock: 6,
-      minimumStock: 4,
+      minimumStock: 4,tempStock: 0,
+	  
       lastModified: Date.now()
       }),
   new Product({
@@ -155,6 +171,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 8,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -164,6 +181,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 1,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -173,6 +191,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),  
   new Product({        
@@ -182,6 +201,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -191,6 +211,7 @@ var products = [
       location: "",
       stock: 98,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -200,6 +221,7 @@ var products = [
       location: "",
       stock: 40,
       minimumStock: 40,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -209,6 +231,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -218,6 +241,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -227,6 +251,7 @@ var products = [
       location: "",
       stock: 8,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -236,6 +261,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -245,6 +271,7 @@ var products = [
       location: "",
       stock: 47,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -254,6 +281,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -263,6 +291,7 @@ var products = [
       location: "",
       stock: 15,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -272,6 +301,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -281,6 +311,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({        
@@ -290,6 +321,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       laabhjmnostModified: Date.now()
       }),
   new Product({        
@@ -299,6 +331,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -308,6 +341,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -317,6 +351,7 @@ var products = [
       location: "",
       stock: 20,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -326,6 +361,7 @@ var products = [
       location: "",
       stock: 10,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -335,6 +371,7 @@ var products = [
       location: "",
       stock: 10,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -344,6 +381,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -353,6 +391,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -362,6 +401,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),  
   new Product({
@@ -371,6 +411,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -380,6 +421,7 @@ var products = [
       location: "",
       stock: 40,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -389,6 +431,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -398,6 +441,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -407,6 +451,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -416,6 +461,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -425,6 +471,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -434,6 +481,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -443,6 +491,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -452,6 +501,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -461,6 +511,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -470,6 +521,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -479,6 +531,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -488,6 +541,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -497,6 +551,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -506,6 +561,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 1,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -515,6 +571,7 @@ var products = [
       location: "",
       stock: 14,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -524,6 +581,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -533,6 +591,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -542,6 +601,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 8,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -551,6 +611,7 @@ var products = [
       location: "",
       stock: 57,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -560,6 +621,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -569,6 +631,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -578,6 +641,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -587,6 +651,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -596,6 +661,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -605,6 +671,7 @@ var products = [
       location: "",
       stock: 14,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -614,6 +681,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -623,6 +691,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -632,6 +701,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -641,6 +711,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -650,6 +721,7 @@ var products = [
       location: "",
       stock: 10,
       minimumStock: 15,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -659,6 +731,7 @@ var products = [
       location: "",
       stock: 8,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -668,6 +741,7 @@ var products = [
       location: "",
       stock: 13,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -677,6 +751,7 @@ var products = [
       location: "",
       stock: 27,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -686,6 +761,7 @@ var products = [
       location: "",
       stock: 286,
       minimumStock: 200,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -695,6 +771,7 @@ var products = [
       location: "",
       stock: 20,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -704,6 +781,7 @@ var products = [
       location: "",
       stock: 10,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -713,6 +791,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -722,6 +801,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -731,6 +811,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -740,6 +821,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -749,6 +831,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -758,6 +841,7 @@ var products = [
       location: "",
       stock: 11,
       minimumStock: 5,
+	  tempStock: 0,	  
       lastModified: Date.now()
       }),
   new Product({
@@ -767,6 +851,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -776,6 +861,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -785,6 +871,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -794,6 +881,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -803,6 +891,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -812,6 +901,7 @@ var products = [
       location: "",
       stock: 49,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -821,6 +911,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -830,6 +921,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -839,6 +931,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -848,6 +941,7 @@ var products = [
       location: "",
       stock: 19,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -857,6 +951,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -866,6 +961,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -875,6 +971,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -884,6 +981,7 @@ var products = [
       location: "",
       stock: 26,
       minimumStock: 15,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -893,6 +991,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -902,6 +1001,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 30,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -911,6 +1011,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -920,6 +1021,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -929,6 +1031,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -938,6 +1041,7 @@ var products = [
       location: "",
       stock: 4,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -947,6 +1051,7 @@ var products = [
       location: "",
       stock: 18,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -956,6 +1061,7 @@ var products = [
       location: "",
       stock: 4,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -965,6 +1071,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -974,6 +1081,7 @@ var products = [
       location: "",
       stock: 17,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -983,6 +1091,7 @@ var products = [
       location: "",
       stock: 16,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -992,6 +1101,7 @@ var products = [
       location: "",
       stock: 16,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1001,6 +1111,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1010,6 +1121,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1019,6 +1131,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1028,6 +1141,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1037,6 +1151,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1046,6 +1161,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 2,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1055,6 +1171,7 @@ var products = [
       location: "",
       stock: 13,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1064,6 +1181,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1073,6 +1191,7 @@ var products = [
       location: "",
       stock: 11,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1082,6 +1201,7 @@ var products = [
       location: "",
       stock: 117,
       minimumStock: 24,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1091,6 +1211,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1100,6 +1221,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1109,6 +1231,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1118,6 +1241,7 @@ var products = [
       location: "",
       stock: 127,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1127,6 +1251,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 3,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1136,6 +1261,7 @@ var products = [
       location: "",
       stock: 24,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1145,6 +1271,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1154,6 +1281,7 @@ var products = [
       location: "",
       stock: 19,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1163,6 +1291,7 @@ var products = [
       location: "",
       stock: 28,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1172,6 +1301,7 @@ var products = [
       location: "",
       stock: 22,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1181,6 +1311,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 1,
+	  tempStock: 0,
       lastModified: Date.now()
       }),  
   new Product({
@@ -1190,6 +1321,7 @@ var products = [
       location: "",
       stock: 27,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1199,6 +1331,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1208,6 +1341,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1217,6 +1351,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1226,6 +1361,7 @@ var products = [
       location: "",
       stock: 7,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1235,6 +1371,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1244,6 +1381,7 @@ var products = [
       location: "",
       stock: 16,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1253,6 +1391,7 @@ var products = [
       location: "",
       stock: 13,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1262,6 +1401,7 @@ var products = [
       location: "",
       stock: 18,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1271,6 +1411,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1280,6 +1421,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1289,6 +1431,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1298,6 +1441,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1307,6 +1451,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1316,6 +1461,7 @@ var products = [
       location: "",
       stock: 14,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1325,6 +1471,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1334,6 +1481,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1343,6 +1491,7 @@ var products = [
       location: "",
       stock: 3,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1352,6 +1501,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1361,6 +1511,7 @@ var products = [
       location: "",
       stock: 64,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1370,6 +1521,7 @@ var products = [
       location: "",
       stock: 18,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1379,6 +1531,7 @@ var products = [
       location: "",
       stock: 1,
       minimumStock: 1,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1388,6 +1541,7 @@ var products = [
       location: "",
       stock: 19,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1397,6 +1551,7 @@ var products = [
       location: "",
       stock: 8,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1406,6 +1561,7 @@ var products = [
       location: "",
       stock: 19,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1424,6 +1580,7 @@ var products = [
       location: "",
       stock: 4,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1433,6 +1590,7 @@ var products = [
       location: "",
       stock: 12,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1442,6 +1600,7 @@ var products = [
       location: "",
       stock: 14,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1451,6 +1610,7 @@ var products = [
       location: "",
       stock: 0,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1460,6 +1620,7 @@ var products = [
       location: "",
       stock: 9,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1469,6 +1630,7 @@ var products = [
       location: "",
       stock: 37,
       minimumStock: 12,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1478,6 +1640,7 @@ var products = [
       location: "",
       stock: 6,
       minimumStock: 0,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1487,6 +1650,7 @@ var products = [
       location: "",
       stock: 45,
       minimumStock: 50,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1496,6 +1660,7 @@ var products = [
       location: "",
       stock: 39,
       minimumStock: 20,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1505,6 +1670,7 @@ var products = [
       location: "",
       stock: 15,
       minimumStock: 10,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1514,6 +1680,7 @@ var products = [
       location: "",
       stock: 4,
       minimumStock: 50,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1523,6 +1690,7 @@ var products = [
       location: "",
       stock: 5,
       minimumStock: 5,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1532,6 +1700,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 1,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1541,6 +1710,7 @@ var products = [
       location: "",
       stock: 2,
       minimumStock: 50,
+	  tempStock: 0,
       lastModified: Date.now()
       }),
   new Product({
@@ -1550,6 +1720,7 @@ var products = [
       location: "",
       stock: 4,
       minimumStock: 1,
+	  tempStock: 0,
       lastModified: Date.now()
       })
 ];

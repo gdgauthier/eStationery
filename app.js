@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -52,7 +52,6 @@ hbs.registerHelper('if_gt0', function(a, b, opts) {
   }
 });
 
-
 hbs.registerHelper('if_lt', function(a, b, opts) {
   if(a < b) {
     return opts.fn(this);
@@ -69,9 +68,8 @@ hbs.registerHelper('if_null', function(a, b, opts) {
   }
 });
 
-
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'yourFavIcon.png')));//place it in public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -79,11 +77,11 @@ app.use(logger('dev'));
 app.use(validator());
 app.use(cookieParser());
 app.use(session({
-  secret: 'yourSecret', 
+  secret: 'yoursecret', 
   resave: false, 
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  cookie: { maxAge: 30 * 60 * 1000 }//half an hour
+  cookie: { maxAge: 60 * 60 * 1000 }
 }));
 
 app.use(flash());

@@ -73,8 +73,8 @@
 .items {
   height: 268px;
 }
-#group-item {
-  width: 70%;
+.title {
+  margin-left: 2%;
 }
 #search-admin {
   margin-left: 40%;

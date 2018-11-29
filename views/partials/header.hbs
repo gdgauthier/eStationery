@@ -24,7 +24,7 @@
 	{{# if login}}
       {{# if_eq user.role "usuario"}}
      <li>
-      <a id="btn-miss" class="btn-danger" role="button">¡Falta producto!</a>
+      <a onclick="topFunction()" id="btn-miss" class="btn-danger" role="button">¡Falta producto!</a>
      </li>
      <li>
       <a id="btn-cart" href="/shopping-cart/" class="btn-success" role="button">
@@ -41,7 +41,18 @@
 	 {{/if_eq}}
     {{/if}}
      {{# if_eq user.role "administrador"}}
-    <li><a role="button" id="cog"><i class="fa fa-cog" aria-hidden="true"></i> Configuración</a></li>
+    <li><a onclick="topFunction()" role="button" id="cog"><i class="fa fa-cog" aria-hidden="true"></i> Configuración</a></li>
+    <li>
+      <a id="btn-cart" href="/shopping-cart/" class="btn-success" role="button">Items
+      <span class="badge">
+        {{# if session.cart.totalQty}}
+        {{session.cart.totalQty}}
+        {{else}}
+        0
+      </span>
+      {{/if}}
+      </a>
+     </li>
     {{/if_eq}}
     <li class="dropdown">
       <a href="#" id="btn-user" class="dropdown-toggle btn-primary" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> 
@@ -53,11 +64,9 @@
       <span class="caret"></span></a>
       <ul class="dropdown-menu">
       {{# if login}}
-	    {{# if_eq user.role "administrador"}}        
-		<li><a href="/admin">Inicio</a></li>
-        <li role="separator" class="divider"></li>        
-        <li><a href="/admin/#stock-ok">Arts. con stock</a></li>                
-        <li><a href="/admin/#stock-not-ok">Arts. sin stock</a></li>
+	    {{# if_eq user.role "administrador"}}
+        <li><a href="/#stock-ok">Arts. con stock</a></li>                
+        <li><a href="/#stock-not-ok">Arts. sin stock</a></li>
         <li><a href="/user/profile-admin">Historial de pedidos</a></li>
 		{{/if_eq}}
         {{# if_eq user.role "usuario"}}

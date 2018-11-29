@@ -7,6 +7,7 @@
 {{# if_eq user.role "administrador"}}
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
+    <h1>Historial de pedidos</h1>
     <form class="" id="search-admin-users" action="/user/profile-admin" method="GET">
      <div class="form-group">
        <input name="search" type="text" class="form-control" placeholder="Buscar por usuario">
@@ -15,8 +16,7 @@
     </form>
     {{# if_null noMatch null}}
     <h4 id="no-match">{{noMatch}}</h4>
-    {{/if_null}}
-    <h1>Historial de pedidos</h1>
+    {{/if_null}}    
     <hr>
     {{# each orders }}
     <div class="panel panel-default">
@@ -33,7 +33,7 @@
       </div>
     </div>
   {{/each}}
-  <a href="/admin">Volver</a>
+  <a href="/">Volver</a>
   </div>
 </div>
 {{/if_eq}}

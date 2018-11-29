@@ -14,6 +14,21 @@
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script>
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<script>
+  window.addEventListener('scroll',function() {
+    localStorage.setItem('scrollPosition',window.scrollY);
+  },false);
+  window.addEventListener('load',function() {
+    if(localStorage.getItem('scrollPosition') !== null)
+      window.scrollTo(0, localStorage.getItem('scrollPosition'));
+  },false);
+</script>
+<script>
   document.getElementById('lastModified').value = Date();
 </script>
 <script>

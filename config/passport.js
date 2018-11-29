@@ -1,4 +1,4 @@
-﻿var passport = require('passport');
+var passport = require('passport');
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
 
@@ -18,7 +18,7 @@ passport.use('local.signup', new LocalStrategy({
   passReqToCallback: true
 }, function (req, email, password, done) {
     req.checkBody('email', 'Mail inválido').notEmpty().isEmail();
-    req.checkBody('password', 'La clave debe tener al menos 8 caracteres.').notEmpty().isLength({min:8});
+    req.checkBody('password', 'La clave debe tener al menos 4 caracteres.').notEmpty().isLength({min:4});
     var errors = req.validationErrors();
     if (errors) {
       var messages = [];
