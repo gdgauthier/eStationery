@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 ﻿var express = require('express');
+=======
+var express = require('express');
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
 var nodemailer = require('nodemailer');
 var router = express.Router();
 var request = require("request");
 var Handlebars = require("handlebars");
 var path = require('path');
+<<<<<<< HEAD
 var csrf = require('csurf');
+=======
+var async = require('async');
+var crypto = require('crypto');
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
 var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
@@ -259,6 +268,76 @@ router.get('/admin', isLoggedIn, isAdmin, function (req, res, next) {
   }
 });
 
+<<<<<<< HEAD
+=======
+router.post('/admin/users/:email', isLoggedIn, isAdmin, function(req, res, next) {
+  async.waterfall([
+    function(done) {
+      crypto.randomBytes(20, function(err, buf) {
+        var token = buf.toString('hex');
+        done(err, token);
+      });
+    },
+    function(token, done) {
+      user.findOne({ email: req.params.email }, function(err, user) {
+        if (!user) {
+          console.log('No account with that email address exists.');
+          return res.redirect('/admin/users');
+        }
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+        user.save(function(err) {
+          done(err, token, user);
+        });
+      });
+    },
+    function(token, user, done) {
+	  res.redirect('/reset/' + token);      
+    }
+  ], function(err) {
+    if (err) return next(err);
+    res.redirect('/admin/users');
+  });
+});
+
+router.get('/reset/:token', isLoggedIn, isAdmin, function(req, res) {
+  user.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      console.log('Password reset token is invalid or has expired.');
+      return res.redirect('/admin/users');
+    }
+    res.render('user/reset', {
+      user: user
+    });
+  });
+});
+
+router.post('/reset/:token', function(req, res) {
+  async.waterfall([
+    function(done) {
+      user.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          console.log('Password reset token is invalid or has expired.');
+          return res.redirect('back');
+        }
+
+        user.password = user.encryptPassword(req.body.password);
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+
+        user.save(function(err) {
+          res.redirect('/admin');
+        });
+      });
+    }
+  ], function(err) {
+    res.redirect('/admin');
+  });
+});
+
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
 //POST create user
 router.post('/admin/create-user', isLoggedIn, isAdmin, function (req, res, next) {
   req.logout();
@@ -314,4 +393,8 @@ function isUser(req, res, next) {
 
 function escapeRegex(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd

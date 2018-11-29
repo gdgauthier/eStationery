@@ -25,5 +25,9 @@ Basic items filter using HBS helper.
 Not wokrking as intended:
 
 Protect the signup route and be able to create users while admin is logged in.
+<<<<<<< HEAD
 User password reset.
 Automatic stock update either after the user adds the item to the cart, or after the order is sent.
+=======
+Automatic stock update either after the user adds the item to the cart, or after the order is sent.
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd

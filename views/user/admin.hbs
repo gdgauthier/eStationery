@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="row">
   <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
     <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
@@ -150,4 +151,158 @@
         {{/if_eq}}
         {{/each}}
       </tbody>
+=======
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+    <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+      {{ successMsg }}
+    </div>
+  </div>
+</div>
+<div class="admin" id="admin">
+  <div class="btn-group-vertical">
+    <a href="/users" class="btn btn-primary" role="button">Listar usuarios</a> <a href="/user/profile-admin" class="btn btn-success" role="button">Historial de Pedidos</a>
+    <a href="/new" class="btn btn-warning" role="button">Nuevo item</a>    
+  </div>
+  <form action="/admin/create-user" method="POST">
+    <br>
+    <button id="btn-new-user" class="btn btn-warning">Nuevo usuario</button><h5 class="text-danger">Nota: ¡Esta acción cerrará sesión!</h5>
+  </form>
+<hr>
+</div>
+  {{# if_null noMatch null}}
+  <h4 id="no-match">{{noMatch}}</h4>
+  {{/if_null}}  
+    {{# if_eq user.role "administrador"}}
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <form class="navbar-form" action="/admin" method="GET">
+          <div class="form-group">
+           <input name="search" type="text" class="form-control" placeholder="Buscar producto">
+         </div>
+         <button type="submit" class="btn btn-default">Buscar</button>
+        </form>
+      </div>
+    </div>
+    {{/if_eq}}
+    <h2 class="stock-ok" id="stock-ok">Artículos con stock igual o mayor al mínimo</h2>
+    <table class="table">
+      <thead>        
+          <th>Foto</th>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+          <th>Stock mínimo</th>
+          <th>Ubicación</th>
+          <th>Última modificación</th>
+          <th>Editar/Borrar</th>
+      </thead>
+      <tbody>        
+        <tr>
+          {{# each products}}
+          {{# if_gt this.stock 0}}
+          {{# if_gt0 this.stock minimumStock}}
+          <td><img class="art zoom" src="{{ this.imagePath }}" alt="Item" class="img-responsive"></td>
+          <td>{{ this.title }}</td>
+          <td>{{ this.description }}</td>
+          {{# if_gt0 this.stock minimumStock}}
+          <td class="stock-ok">{{ this.stock }}</td>
+          {{else}}
+          <td class="stock-not-ok">{{ this.stock }}</td>
+          {{/if_gt0}}
+          <td>{{ this.minimumStock }}</td>
+          <td>{{ this.location }}</td>          
+          <td>{{ this.lastModified }}</td>
+          <td>
+            <a href="/edit/{{this._id}}" class="btn btn-info" role="button">Editar Item</a>
+            <form action="/{{ this._id }}?_method=DELETE" method="POST">
+              <button class="btn btn-danger btn-xs">Borrar item</button>  
+            </form>
+          </td>
+        </tr>
+        {{/if_gt0}}
+        {{/if_gt}}        
+        {{/each}}
+      </tbody>      
+    </table>
+<hr>
+    <h2 class="stock-not-ok" id="stock-not-ok">Artículos por debajo del stock mínimo</h2>
+    <table class="table">
+      <thead>        
+          <th>Foto</th>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+          <th>Stock mínimo</th>
+          <th>Ubicación</th>
+          <th>Última modificación</th>
+          <th>Editar/Borrar</th>
+      </thead>
+      <tbody>
+        <tr>
+          {{# each products }}
+          {{# if_lt this.stock minimumStock}}
+          {{# if_gt this.stock 0}}
+          <td><img class="art zoom" src="{{ this.imagePath }}" alt="..." class="img-responsive"></td>
+          <td>{{ this.title }}</td>
+          <td>{{ this.description }}</td>
+          {{# if_gt this.stock minimumStock}}
+          <td class="stock-ok">{{ this.stock }}</td>
+          {{else}}
+          <td class="stock-not-ok">{{ this.stock }}</td>
+          {{/if_gt}}
+          <td>{{ this.minimumStock }}</td>
+          <td>{{ this.location }}</td>          
+          <td>{{ this.lastModified }}</td>
+          <td>
+            <a href="/edit/{{this._id}}" class="btn btn-info" role="button">Editar Item</a>
+            <form action="/{{ this._id }}?_method=DELETE" method="POST">
+              <button class="btn btn-danger btn-xs">Borrar item</button>
+            </form>            
+          </td>
+        </tr>
+        {{/if_gt}}
+        {{/if_lt}}        
+        {{/each}}
+      </tbody>
+    </table>
+<hr>
+    <h2 class="stock-not-ok" id="stock-not-ok">Artículos sin stock</h2>
+    <table class="table">
+      <thead>        
+          <th>Foto</th>
+          <th>Título</th>
+          <th>Descripción</th>
+          <th>Stock</th>
+          <th>Stock mínimo</th>
+          <th>Ubicación</th>
+          <th>Última modificación</th>
+          <th>Editar/Borrar</th>
+      </thead>
+      <tbody>
+        <tr>
+          {{# each products }}          
+          {{# if_eq this.stock 0}}
+          <td><img class="art zoom" src="{{ this.imagePath }}" alt="..." class="img-responsive"></td>
+          <td>{{ this.title }}</td>
+          <td>{{ this.description }}</td>
+          {{# if_gt this.stock 0}}
+          <td class="stock-ok">{{ this.stock }}</td>
+          {{else}}
+          <td class="stock-not-ok">{{ this.stock }}</td>
+          {{/if_gt}}
+          <td>{{ this.minimumStock }}</td>
+          <td>{{ this.location }}</td>          
+          <td>{{ this.lastModified }}</td>
+          <td>
+            <a href="/edit/{{this._id}}" class="btn btn-info" role="button">Editar Item</a>
+            <form action="/{{ this._id }}?_method=DELETE" method="POST">
+              <button class="btn btn-danger btn-xs">Borrar item</button>  
+            </form>
+          </td>
+        </tr>
+        {{/if_eq}}
+        {{/each}}
+      </tbody>
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
     </table>

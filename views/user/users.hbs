@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
   #search-user, #cog { 
     display: none !important;
@@ -21,3 +22,31 @@
     <a href="/admin">Volver</a>
   </div>  
 </div>
+=======
+<style>
+  #search-user, #cog { 
+    display: none !important;
+  }
+</style>
+<div class="row">
+  <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+    <h1>Listado de usuarios activos</h1>
+    <h3>Email / <span class="badge">Rol</span></h3>
+    <ul class="list-group">
+    {{# each users }}
+      <li class="list-group-item">
+        <strong name="email">{{ this.email }}</strong>
+        <span class="badge" name="role">{{ this.role }}</span>
+        <form action="/admin/users/{{ this.email }}" method="POST">
+          <button id="btn-reset-user" class="btn btn-info">Restablecer clave</button>
+        </form>
+        <form action="/admin/users/{{ this._id }}?_method=DELETE" method="POST">
+          <button class="btn btn-danger btn-xs">Eliminar</button>
+        </form>
+      </li>
+    {{/each}}
+    </ul>
+    <a href="/admin">Volver</a>
+  </div>  
+</div>
+>>>>>>> 5e4e23e3f92bc519cbe9a925671dc69bd9b4e0bd
