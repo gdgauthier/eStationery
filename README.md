@@ -2,26 +2,26 @@
 
 ### Works for User role:
 
-Login/Logout.
-Add to cart one item on each click on the product.
-Remove all items from the cart, or one item from group of items.
-Search for products.
-Request for missing items using a form in plain text.
-See their orders history.
+- Login/Logout.
+- Add to cart one item on each click on the product.
+- Remove all items from the cart, or one item from group of items.
+- Search for products.
+- Request for missing items using a form in plain text.
+- See their orders history.
 
 ### Works for Admin role:
 
 - Login/Logout.
 - Search for items.
 - Edit one item.
-Create an item.
-Delete an item.
-Search and list users.
-Delete users.
-Create users.
-Reset user password.
-See all users orders history.
-Basic items filter using HBS helper.
+- Create an item.
+- Delete an item.
+- Search and list users.
+- Delete users.
+- Create users.
+- Reset user password.
+- See all users orders history.
+- Basic items filter using HBS helper.
 
 ## Screenshots:
 
@@ -41,46 +41,46 @@ Basic items filter using HBS helper.
 
 ![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/user/user-cart-example.JPG "User Cart Example")
 
-### User Cart:
+### Admin Index (Stock OK):
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-index-stockOK.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-index-stockOK.JPG "Stock OK")
 
-### User Cart:
+### Admin Index (Stock Not OK):
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-index-stocknotOK.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-index-stocknotOK.JPG "Stock not OK")
 
-### User Cart:
+### Admin Index (No Stock):
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-index-nostock.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-index-nostock.JPG "No Stock")
 
-### User Cart:
+### Admin Configuration:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-configuration.jpg "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-configuration.jpg "Configuration")
 
-### User Cart:
+### Admin Item creation:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-create-item.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-create-item.JPG "Item creation")
 
-### User Cart:
+### Admin Item Edition:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-edit-item.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-edit-item.JPG "Item Edition")
 
-### User Cart:
+### Admin User creation:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-user-creation.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-user-creation.JPG "User creation")
 
-### User Cart:
+### Admin User Password Reset:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-reset-password.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-reset-password.JPG "Password reset")
 
-### User Cart:
+### Admin Users' list:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-users-list.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-users-list.JPG "Users' list")
 
-### User Cart:
+### Admin Users Carts' history:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-cartshistory.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-cartshistory.JPG "Users Carts' history")
 
-### User Cart:
+### Admin List of items to request:
 
-![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-messagetoadmin.JPG "User Cart Example")
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/admin/admin-messagetoadmin.JPG "Items to request")
