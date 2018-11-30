@@ -22,3 +22,9 @@ Create users.
 Reset user password.
 See all users orders history.
 Basic items filter using HBS helper.
+
+## Screenshots:
+
+### Sign In:
+
+![Alt text](https://github.com/gdgauthier/eStationery/blob/master/captures/user/signin.jpg "Sign In")
