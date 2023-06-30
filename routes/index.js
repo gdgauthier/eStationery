@@ -11,6 +11,7 @@ var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
 var user = require("../models/user");
+const { log } = require('console');
 
 var transporter = nodemailer.createTransport({
   host: "host",
@@ -39,8 +40,9 @@ router.get('/', isLoggedIn, function (req, res, next) {
     });
   } else {
     Product.find(function(err, products) {
+      console.log(products)
       res.render("shop/index", {title: 'eStationery', products: products, successMsg: successMsg, noMessages: !successMsg, user: req.user, noMatch: noMatch});
-    });
+    }).lean();
   }
 });
 
@@ -321,11 +323,13 @@ ${req.body.missing}
 
 //POST create user
 router.post('/create-user', isLoggedIn, isAdmin, function (req, res, next) {
+//router.post('/create-user', function (req, res, next) {
   req.logout();
-  res.redirect('/user/signup');
+  res.redirect('/user/signin');
 });
 
 router.get('/signup', isLoggedIn, isAdmin, function (req, res, next) {
+//router.get('/signup', function (req, res, next) {
     var messages = req.flash('error');
     res.render('user/signup', {title: "eStationery", messages: messages, hasErrors: messages.length > 0});
 });

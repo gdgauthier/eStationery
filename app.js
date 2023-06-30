@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -11,7 +12,7 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
-var MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongo');
 var methodOverride = require("method-override");
 var hbs = require("handlebars");
 var http = require('http');
@@ -21,11 +22,22 @@ var app = express()
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb://localhost/estationery', { useMongoClient: true, });
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useUnifiedTopology", true);
+mongoose.set("useCreateIndex", true);
+mongoose.connect(process.env.MONGO);
+//mongoose.connect('mongodb://localhost/estationery', { useMongoClient: true, });
 require('./config/passport');
 
 // view engine setup
-app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
+app.engine('.hbs', expressHbs.engine({
+  defaultLayout: 'layout',
+  extname: '.hbs',
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true
+  }
+}));
 app.set('view engine', '.hbs');
 
 hbs.registerHelper('if_eq', function(a, b, opts) {
@@ -80,7 +92,7 @@ app.use(session({
   secret: 'yoursecret', 
   resave: false, 
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  store: MongoStore.create({ mongoUrl: process.env.MONGO }),
   cookie: { maxAge: 60 * 60 * 1000 }
 }));
 
